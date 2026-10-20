@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff9fb" />
+    <title>Caloma Bakery | Carta digital</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --fondo: #fff9fb;
+        --blanco: #ffffff;
+        --rosa: #f1cedb;
+        --rosa-claro: #faedf2;
+        --rosa-fuerte: #dba1b8;
+        --lila: #e7d9ef;
+        --bordo: #702b48;
+        --bordo-oscuro: #512037;
+        --texto: #392832;
+        --gris: #897680;
+        --borde: #f0e2e8;
+        --sombra: 0 12px 35px rgba(112, 43, 72, 0.07);
+        --radio: 20px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 105px;
+      }
+
+      body {
+        background: var(--fondo);
+        color: var(--texto);
+        font-family: "DM Sans", sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .announcement {
+        padding: 9px 16px;
+        text-align: center;
+        background: var(--bordo);
+        color: white;
+        font-size: 11px;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255, 249, 251, 0.96);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--borde);
+      }
+
+      .header-inner {
+        max-width: 1150px;
+        min-height: 83px;
+        margin: auto;
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .logo {
+        width: 55px;
+        height: 55px;
+        flex-shrink: 0;
+        background: var(--rosa);
+        border: 1px solid rgba(112, 43, 72, 0.12);
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .logo::before {
+        content: "";
+        position: absolute;
+        inset: 5px;
+        border: 1px solid rgba(112, 43, 72, 0.23);
+      }
+
+      .logo-c {
+        font-family: "Playfair Display", serif;
+        font-size: 43px;
+        font-weight: 600;
+        color: var(--bordo);
+        line-height: 1;
+        transform: translateY(-2px);
+      }
+
+      .brand-name {
+        font-family: "Playfair Display", serif;
+        font-size: 22px;
+        letter-spacing: 1.5px;
+        color: var(--bordo);
+        line-height: 1.15;
+      }
+
+      .brand-subtitle {
+        display: block;
+        font-size: 9px;
+        letter-spacing: 3.2px;
+        color: var(--gris);
+        margin-top: 4px;
+      }
+
+      .header-link {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--bordo);
+        border: 1px solid var(--rosa-fuerte);
+        padding: 10px 16px;
+        border-radius: 30px;
+        white-space: nowrap;
+        transition: 0.2s;
+      }
+
+      .header-link:hover {
+        background: var(--rosa-claro);
+      }
+
+      .hero {
+        max-width: 1150px;
+        margin: 25px auto 0;
+        padding: 0 24px;
+      }
+
+      .hero-card {
+        min-height: 400px;
+        overflow: hidden;
+        border-radius: 27px;
+        background: var(--rosa-claro);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        box-shadow: var(--sombra);
+      }
+
+      .hero-copy {
+        padding: 52px 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .eyebrow {
+        color: var(--bordo);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+      }
+
+      h1 {
+        font-size: clamp(38px, 5vw, 60px);
+        line-height: 1.08;
+        color: var(--bordo-oscuro);
+        letter-spacing: -1.3px;
+      }
+
+      .hero-copy > p {
+        color: #78636e;
+        font-size: 14px;
+        margin-top: 18px;
+        max-width: 360px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 25px;
+      }
+
+      .button-primary,
+      .button-secondary {
+        padding: 12px 18px;
+        border-radius: 30px;
+        font-size: 12px;
+        font-weight: 700;
+        transition: 0.2s;
+      }
+
+      .button-primary {
+        color: white;
+        background: var(--bordo);
+      }
+
+      .button-primary:hover {
+        background: var(--bordo-oscuro);
+        transform: translateY(-1px);
+      }
+
+      .button-secondary {
+        border: 1px solid #d8b8c7;
+        color: var(--bordo);
+        background: rgba(255, 255, 255, 0.45);
+      }
+
+      .hero-image {
+        min-height: 350px;
+        background:
+          linear-gradient(0deg, rgba(55, 24, 38, 0.05), rgba(55, 24, 38, 0.02)),
+          url("https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=85")
+            center / cover;
+      }
+
+      .quick-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 22px;
+        margin-top: 23px;
+        color: var(--gris);
+        font-size: 11px;
+      }
+
+      .quick-info span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .section {
+        max-width: 1150px;
+        margin: auto;
+        padding: 62px 24px 0;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 23px;
+      }
+
+      .section-heading .eyebrow {
+        margin-bottom: 5px;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(28px, 3vw, 36px);
+        color: var(--bordo-oscuro);
+        line-height: 1.2;
+      }
+
+      .section-heading p {
+        max-width: 360px;
+        font-size: 12px;
+        color: var(--gris);
+      }
+
+      .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .featured-card {
+        overflow: hidden;
+        background: white;
+        border: 1px solid var(--borde);
+        border-radius: var(--radio);
+        transition: 0.25s;
+      }
+
+      .featured-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--sombra);
+      }
+
+      .featured-image {
+        height: 190px;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .featured-content {
+        padding: 17px 18px 19px;
+      }
+
+      .featured-content h3 {
+        font-size: 21px;
+        color: var(--bordo);
+      }
+
+      .featured-content p {
+        font-size: 12px;
+        color: var(--gris);
+        margin-top: 4px;
+      }
+
+      .featured-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px solid var(--borde);
+      }
+
+      .price {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--bordo);
+        white-space: nowrap;
+      }
+
+      .tag {
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: var(--rosa-claro);
+        color: var(--bordo);
+        padding: 5px 8px;
+        border-radius: 30px;
+      }
+
+      .category-nav {
+        position: sticky;
+        top: 83px;
+        z-index: 90;
+        background: rgba(255, 249, 251, 0.97);
+        border-bottom: 1px solid var(--borde);
+        margin-top: 48px;
+        backdrop-filter: blur(12px);
+      }
+
+      .category-scroll {
+        max-width: 1150px;
+        margin: auto;
+        padding: 13px 24px;
+        display: flex;
+        gap: 9px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .category-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .category-pill {
+        flex-shrink: 0;
+        padding: 9px 15px;
+        border: 1px solid var(--borde);
+        background: white;
+        color: var(--gris);
+        border-radius: 30px;
+        font-size: 11px;
+        font-weight: 600;
+        transition: 0.2s;
+      }
+
+      .category-pill:hover,
+      .category-pill.active {
+        background: var(--bordo);
+        border-color: var(--bordo);
+        color: white;
+      }
+
+      .menu-section {
+        max-width: 1150px;
+        margin: auto;
+        padding: 48px 24px 0;
+        scroll-margin-top: 145px;
+      }
+
+      .menu-title {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 20px;
+      }
+
+      .menu-icon {
+        width: 47px;
+        height: 47px;
+        flex-shrink: 0;
+        border-radius: 15px;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        background: var(--rosa-claro);
+      }
+
+      .menu-title h2 {
+        color: var(--bordo-oscuro);
+        font-size: 29px;
+        line-height: 1.2;
+      }
+
+      .menu-title p {
+        font-size: 12px;
+        color: var(--gris);
+        margin-top: 3px;
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 13px;
+        min-width: 0;
+        background: white;
+        border: 1px solid var(--borde);
+        border-radius: 16px;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .menu-item:hover {
+        border-color: var(--rosa-fuerte);
+        box-shadow: 0 5px 18px rgba(112, 43, 72, 0.04);
+      }
+
+      .item-image {
+        width: 82px;
+        height: 82px;
+        flex-shrink: 0;
+        border-radius: 12px;
+        background-position: center;
+        background-size: cover;
+        background-color: var(--rosa-claro);
+      }
+
+      .item-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .item-info h3 {
+        color: var(--texto);
+        font-size: 17px;
+        line-height: 1.3;
+      }
+
+      .item-info p {
+        color: var(--gris);
+        font-size: 11px;
+        margin-top: 5px;
+        line-height: 1.5;
+      }
+
+      .item-price {
+        align-self: flex-start;
+        padding-top: 3px;
+        color: var(--bordo);
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .note {
+        max-width: 1102px;
+        margin: 42px auto 0;
+        padding: 0 24px;
+      }
+
+      .note-inner {
+        border: 1px solid #e8d8ef;
+        background: #f7f0fa;
+        color: #715b78;
+        border-radius: 15px;
+        padding: 16px 20px;
+        font-size: 11px;
+        text-align: center;
+      }
+
+      .footer {
+        margin-top: 60px;
+        padding: 40px 24px 25px;
+        text-align: center;
+        background: var(--rosa-claro);
+        border-top: 1px solid var(--borde);
+      }
+
+      .footer-logo {
+        width: 49px;
+        height: 49px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 12px;
+        background: var(--rosa);
+        color: var(--bordo);
+        border: 1px solid #e2b5c7;
+        font-family: "Playfair Display", serif;
+        font-size: 37px;
+        line-height: 1;
+      }
+
+      .footer h2 {
+        color: var(--bordo);
+        font-size: 23px;
+        letter-spacing: 2px;
+      }
+
+      .footer p {
+        margin-top: 8px;
+        font-size: 11px;
+        color: var(--gris);
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 17px;
+        color: var(--bordo);
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .copyright {
+        margin-top: 28px !important;
+        padding-top: 17px;
+        border-top: 1px solid #ead8e1;
+        font-size: 10px !important;
+      }
+
+      @media (max-width: 760px) {
+        .header-inner {
+          min-height: 72px;
+          padding: 10px 16px;
+        }
+
+        .logo {
+          width: 47px;
+          height: 47px;
+        }
+
+        .logo-c {
+          font-size: 37px;
+        }
+
+        .brand-name {
+          font-size: 19px;
+        }
+
+        .brand-subtitle {
+          font-size: 8px;
+          letter-spacing: 2.6px;
+        }
+
+        .header-link {
+          padding: 9px 12px;
+          font-size: 10px;
+        }
+
+        .hero {
+          margin-top: 15px;
+          padding: 0 14px;
+        }
+
+        .hero-card {
+          grid-template-columns: 1fr;
+          border-radius: 22px;
+        }
+
+        .hero-copy {
+          padding: 32px 25px;
+        }
+
+        h1 {
+          font-size: 43px;
+        }
+
+        .hero-image {
+          min-height: 235px;
+          order: -1;
+        }
+
+        .section {
+          padding: 45px 14px 0;
+        }
+
+        .section-heading {
+          display: block;
+        }
+
+        .section-heading p {
+          margin-top: 8px;
+        }
+
+        .featured-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .featured-card:last-child {
+          display: none;
+        }
+
+        .featured-image {
+          height: 135px;
+        }
+
+        .featured-content {
+          padding: 12px;
+        }
+
+        .featured-content h3 {
+          font-size: 18px;
+        }
+
+        .featured-content p {
+          font-size: 11px;
+        }
+
+        .featured-bottom {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 7px;
+        }
+
+        .category-nav {
+          top: 71px;
+          margin-top: 35px;
+        }
+
+        .category-scroll {
+          padding: 11px 14px;
+        }
+
+        .menu-section {
+          padding: 38px 14px 0;
+          scroll-margin-top: 125px;
+        }
+
+        .menu-title h2 {
+          font-size: 26px;
+        }
+
+        .menu-grid {
+          grid-template-columns: 1fr;
+          gap: 9px;
+        }
+
+        .item-image {
+          width: 75px;
+          height: 75px;
+        }
+
+        .item-info h3 {
+          font-size: 16px;
+        }
+
+        .item-price {
+          font-size: 12px;
+        }
+
+        .note {
+          padding: 0 14px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .brand {
+          gap: 8px;
+        }
+
+        .brand-name {
+          font-size: 16px;
+        }
+
+        .header-link {
+          padding: 8px 9px;
+          font-size: 9px;
+        }
+
+        .item-image {
+          width: 65px;
+          height: 65px;
+        }
+
+        .item-info p {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="announcement">
+      Un pequeño placer en cada visita · Caloma Bakery
+    </div>
+
+    <header>
+      <div class="header-inner">
+        <a class="brand" href="#inicio" aria-label="Caloma Bakery, inicio">
+          <div class="logo" aria-hidden="true">
+            <span class="logo-c">C</span>
+          </div>
+          <div>
+            <div class="brand-name">CALOMA</div>
+            <span class="brand-subtitle">BAKERY</span>
+          </div>
+        </a>
+
+        <a class="header-link" href="#carta">Ver la carta ↓</a>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="hero-card">
+          <div class="hero-copy">
+            <span class="eyebrow">Café · Cookies · Pastelería</span>
+            <h1>Un momento<br />para disfrutar.</h1>
+            <p>
+              Café rico, cosas dulces y pequeños gustos para hacer especial
+              cualquier momento del día.
+            </p>
+
+            <div class="hero-buttons">
+              <a class="button-primary" href="#carta">Explorar la carta</a>
+            </div>
+
+            <div class="quick-info">
+              <span>☕ Café y bebidas</span>
+              <span>♡ Pastelería</span>
+              <span>✦ Algo rico para vos</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="destacados-titulo">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Para tentarte</span>
+            <h2 id="destacados-titulo">Los destacados</h2>
+          </div>
+          <p>Una selección de categorías para empezar a descubrir la carta.</p>
+        </div>
+
+        <div class="featured-grid">
+          <a class="featured-card" href="#cafeteria">
+            <div
+              class="featured-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80&quot;);
+              "
+            ></div>
+            <div class="featured-content">
+              <h3>Cafetería</h3>
+              <p>Tu pausa favorita, taza a taza.</p>
+              <div class="featured-bottom">
+                <span class="tag">Bebidas calientes</span>
+                <span class="price">$0</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="featured-card" href="#cookies">
+            <div
+              class="featured-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80&quot;);
+              "
+            ></div>
+            <div class="featured-content">
+              <h3>Cookies</h3>
+              <p>Un toque dulce para tu día.</p>
+              <div class="featured-bottom">
+                <span class="tag">Algo dulce</span>
+                <span class="price">$0</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="featured-card" href="#tortas">
+            <div
+              class="featured-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80&quot;);
+              "
+            ></div>
+            <div class="featured-content">
+              <h3>Tortas</h3>
+              <p>Para compartir o disfrutar vos.</p>
+              <div class="featured-bottom">
+                <span class="tag">Pastelería</span>
+                <span class="price">$0</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <nav class="category-nav" id="carta" aria-label="Categorías de la carta">
+        <div class="category-scroll">
+          <a class="category-pill active" href="#cafeteria">Cafetería</a>
+          <a class="category-pill" href="#cafes-frios">Cafés fríos</a>
+          <a class="category-pill" href="#cookies">Cookies</a>
+          <a class="category-pill" href="#tortas">Tortas</a>
+          <a class="category-pill" href="#pasteleria">Pastelería</a>
+          <a class="category-pill" href="#desayunos">Desayunos y salados</a>
+        </div>
+      </nav>
+
+      <section class="menu-section" id="cafeteria">
+        <div class="menu-title">
+          <div class="menu-icon">☕</div>
+          <div>
+            <h2>Cafetería</h2>
+            <p>Clásicos para acompañar tu momento.</p>
+          </div>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Espresso</h3>
+              <p>Café intenso, corto y aromático.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo- latte?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Latte</h3>
+              <p>Espresso con leche cremosa.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Cappuccino</h3>
+              <p>Café, leche y una capa de espuma.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Té e infusiones</h3>
+              <p>Una alternativa suave y reconfortante.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="menu-section" id="cafes-frios">
+        <div class="menu-title">
+          <div class="menu-icon">🧊</div>
+          <div>
+            <h2>Cafés fríos</h2>
+            <p>Opciones frescas para los días cálidos.</p>
+          </div>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Iced coffee</h3>
+              <p>Café servido frío con hielo.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Café frío especial</h3>
+              <p>Una bebida fresca para disfrutar.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="menu-section" id="cookies">
+        <div class="menu-title">
+          <div class="menu-icon">🍪</div>
+          <div>
+            <h2>Cookies</h2>
+            <p>Pequeños antojos para cualquier hora.</p>
+          </div>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Cookie de chocolate</h3>
+              <p>Cookie con chocolate, ideal para acompañar el café.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Cookie rellena</h3>
+              <p>Una opción dulce para darte un gusto.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="menu-section" id="tortas">
+        <div class="menu-title">
+          <div class="menu-icon">🍰</div>
+          <div>
+            <h2>Tortas</h2>
+            <p>Un clásico dulce para compartir.</p>
+          </div>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Torta Matilda</h3>
+              <p>Inspirada en la clásica torta de chocolate.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Torta moka</h3>
+              <p>Una combinación de café y dulzura.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Red velvet</h3>
+              <p>Torta de tonos rojizos y crema suave.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="menu-section" id="pasteleria">
+        <div class="menu-title">
+          <div class="menu-icon">🥐</div>
+          <div>
+            <h2>Pastelería</h2>
+            <p>Algo rico para acompañar tu bebida.</p>
+          </div>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Medialunas y panificados</h3>
+              <p>Una opción clásica para el desayuno o la merienda.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Brownie</h3>
+              <p>Un bocado de chocolate para los más golosos.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Chipá</h3>
+              <p>Un clásico salado para picar algo rico.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="menu-section" id="desayunos">
+        <div class="menu-title">
+          <div class="menu-icon">🥪</div>
+          <div>
+            <h2>Desayunos y salados</h2>
+            <p>Alternativas para arrancar el día o hacer una pausa.</p>
+          </div>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Avocado toast</h3>
+              <p>Tostada con palta, ideal para un desayuno diferente.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Tostado de jamón y queso</h3>
+              <p>Un clásico calentito para cualquier momento.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+
+          <article class="menu-item">
+            <div
+              class="item-image"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=300&q=80&quot;);
+              "
+            ></div>
+            <div class="item-info">
+              <h3>Jugos de frutas</h3>
+              <p>Una opción fresca para acompañar tu comida.</p>
+            </div>
+            <span class="item-price">$0</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo" aria-hidden="true">C</div>
+      <h2>CALOMA BAKERY</h2>
+      <p>Café, cookies y pastelería para disfrutar sin apuro.</p>
+      <p>Belgrano 393 · Bernal, Buenos Aires</p>
+
+      <div class="footer-links">
+        <a href="#inicio">Volver arriba ↑</a>
+      </div>
+
+      <p class="copyright">Maqueta de carta digital · Caloma Bakery</p>
+    </footer>
+
+    <script>
+      // Marca visualmente la categoría seleccionada al tocarla.
+      const categoryLinks = document.querySelectorAll(".category-pill");
+
+      categoryLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          categoryLinks.forEach((item) => item.classList.remove("active"));
+          link.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
